@@ -11,7 +11,7 @@ height = 540
 
 senMovY = 0.03
 senMovX = 0.6
-senZoom= 0.5
+senZoom= 0.03
 
 minHeigth = -2
 maxHeigth = 2
@@ -92,7 +92,7 @@ while isRunning:
     rend.update()
 
     #Movimiento del objeto con las teclas
-    if not sewActivate:
+    if not sewActivate: #rotación
         if keys[K_d]:
             model.rotation.z += 15 * deltaTime
 
@@ -105,6 +105,22 @@ while isRunning:
 
         elif keys[K_a]:
             model.rotation.y -= 15 * deltaTime
+
+    if keys[K_q]: #Zoom in
+        if model.translate.z <= -3:
+            model.translate.z += 15 * deltaTime
+
+    elif keys[K_e]: #Zoom out
+        if model.translate.z >= -10:
+            model.translate.z -= 15 * deltaTime
+
+    if keys[K_w]: #Zoom in
+        if model.translate.y <= 2:
+            model.translate.y += 15 * deltaTime
+
+    elif keys[K_s]: #Zoom out
+        if model.translate.y >= -2:
+            model.translate.y -= 15 * deltaTime
 
     #Cambio de shaders
     if keys[K_1]:
@@ -176,7 +192,7 @@ while isRunning:
                      scale= (0.8, 0.8, 0.8))
         model.loadTexture(turtleModel)
         rend.changeModel(model)
-
+        
     rend.render()
     pygame.display.flip()
 

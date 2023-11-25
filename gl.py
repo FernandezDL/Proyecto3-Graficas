@@ -21,6 +21,8 @@ class Renderer(object):
         self.activeShader = None
         
         self.target = glm.vec3(0,0,0)
+        self.point_light = glm.vec3(0,0,0)
+
         self.camAngle = 0.0
         self.camRadio = 0.0
         
@@ -81,6 +83,8 @@ class Renderer(object):
                                1, GL_FALSE, glm.value_ptr( self.projectionMatrix) )
             
             glUniform1f(glGetUniformLocation(self.activeShader, "time"), currentTime)
+
+            glUniform3fv( glGetUniformLocation(self.activeShader, "pointLight"), 1, glm.value_ptr(self.point_light))
 
         if self.activeShader is not None:
             glUniformMatrix4fv( glGetUniformLocation(self.activeShader, "modelMatrix"), 
