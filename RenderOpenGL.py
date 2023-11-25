@@ -18,10 +18,16 @@ maxHeigth = 2
 minZoom = -5
 maxZoom = -16
 
+sewActivate = False
+
 pygame.init()
+pygame.mixer.init()
 
 screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF)
 clock= pygame.time.Clock()
+
+sound = pygame.mixer.Sound("music/ninas_de_instagram.mp3")
+sound.play()
 
 rend= Renderer(screen)
 rend.setShader(vertex_shader, fragment_shader)
@@ -86,11 +92,19 @@ while isRunning:
     rend.update()
 
     #Movimiento del objeto con las teclas
-    if keys[K_d]:
-        model.rotation.z += 15 * deltaTime
+    if not sewActivate:
+        if keys[K_d]:
+            model.rotation.z += 15 * deltaTime
 
-    elif keys[K_a]:
-        model.rotation.z -= 15 * deltaTime
+        elif keys[K_a]:
+            model.rotation.z -= 15 * deltaTime
+    
+    else:
+        if keys[K_d]:
+            model.rotation.y += 15 * deltaTime
+
+        elif keys[K_a]:
+            model.rotation.y -= 15 * deltaTime
 
     #Cambio de shaders
     if keys[K_1]:
@@ -108,6 +122,27 @@ while isRunning:
     elif keys[K_5]:
         rend.setShader(vertex_shader, mixColors_shader)
 
+    #Cambio de música
+    if keys[K_x]:
+        sound.stop()
+        sound = pygame.mixer.Sound("music/ni_me_debes_ni_te_debo.mp3")
+        sound.play()
+
+    elif keys[K_z]:
+        sound.stop()
+        sound = pygame.mixer.Sound("music/ninas_de_instagram.mp3")
+        sound.play()
+
+    elif keys[K_c]:
+        sound.stop()
+        sound = pygame.mixer.Sound("music/conteo_regresivo.mp3")
+        sound.play()
+
+    elif keys[K_v]:
+        sound.stop()
+        sound = pygame.mixer.Sound("music/adios_adios.mp3")
+        sound.play()
+
     #Cambio de modelos
     if keys[K_i]:
         model= Model(filename= cocoModel,
@@ -124,6 +159,7 @@ while isRunning:
                      scale= (4.5, 4.5, 4.5))
         model.loadTexture(sewMachineTexture)
         rend.changeModel(model)
+        sewActivate= True
 
     elif keys[K_y]:
         model= Model(filename= carModel,
