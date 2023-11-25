@@ -1,14 +1,15 @@
 # Proyecto3 - OpenGL
 
 ## Contenido 
-- [Descripción]()
-- [Objetivo]()
-- [Inputs]()
-  - [Movimiento de cámara]()
-    - [Con el teclado]()
-    - [Con el mouse]()
-  - [Cambio de shaders]()
-  - [Cambio de música de fondo]()
+- [Descripción](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#descripci%C3%B3n)
+- [Objetivo](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#objetivo)
+- [Inputs](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#inputs)
+  - [Cambio de modelos](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#cambio-de-modelos)
+  - [Movimiento de cámara](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#movimientos-de-c%C3%A1mara)
+    - Con el teclado
+    - Con el mouse
+  - [Cambio de shaders](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#cambio-de-shaders)
+  - [Cambio de música de fondo](https://github.com/FernandezDL/Proyecto3-Graficas/blob/main/README.md#cambio-de-m%C3%BAsica-de-fondo)
  
 ## Descripción 
 Siendo una especificación estándar multilenguaje y multiplataforma que se utiliza para producir gráficos en 2D y 3D, OpenGL es utilizada como la base para este tercer y último proyecto del curso. Este proyecto tiene como finalildad generar un Renderer el cual sea interactivo y en el que se puedan cargar y visualizar modelos 3D en base al Renderer trabajado durante las sesiones de clase.
